@@ -1,11 +1,18 @@
 
 import { motion } from 'framer-motion'; // Import motion from framer-motion
 import { CenterBg1 } from '../../../assets';
-import { useState } from 'react';
-import SignUp from '../../SignUp';
+// import { useState } from 'react';
+// import SignUp from '../../SignUp';
 
 const Hero = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  // const [showLogin, setShowLogin] = useState(false);
+  const scrollToExpertise = (event) => {
+    event.preventDefault(); // Prevent default anchor click behavior
+    const expertiseSection = document.querySelector('#expertise');
+    if (expertiseSection) {
+      expertiseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <motion.div // Wrap the entire Hero component with motion.div
@@ -18,10 +25,10 @@ const Hero = () => {
         <h1 className="text-[3rem] md:text-[4.5rem] font-bold mb-4 text-gradient md:leading-[80px] leading-[40px] md:px-20 px-4">Invest, Learn and Earn</h1>
         <p className="text-90 md:text-xl text-[#ffffffbb] mb-6 md:px-20 px-4">Get partnered with our SEBI Registered Research Analysts to start your profitable trading journey. </p>
         <div>
-          <button className='main-button md:text-lg text-sm' onClick={() => setShowLogin(true)}>Get Started Today</button>
+          <a href='#features' onClick={scrollToExpertise} className='main-button md:text-lg text-sm'>Get Started Today</a>
         </div>
       </div>
-      {showLogin && <SignUp onClose={() => setShowLogin(false)} />}
+      {/* {showLogin && <SignUp onClose={() => setShowLogin(false)} />} */}
 
     </motion.div> // Close the motion.div wrapper
     
